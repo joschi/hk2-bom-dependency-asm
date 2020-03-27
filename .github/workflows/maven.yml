@@ -1,0 +1,15 @@
+name: Build project
+on:
+  push:
+    branches:
+    - master
+jobs:
+  build:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - uses: actions/checkout@v2
+    - uses: joschi/setup-jdk@v1
+      with:
+        java-version: '11'
+    - name: Print dependency tree
+      run: ./mvnw dependency:tree
